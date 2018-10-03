@@ -29,12 +29,26 @@ var timp_csharp = new Howl({
     preload: true
 })
 
+var timp_c3 = new Howl({
+    src: ["audio/timp_C3_strong.wav"],
+    html5: true,
+    preload: true
+})
+
+var timp_c4 = new Howl({
+    src: ["audio/timp_C4_strong.wav"],
+    html5: true,
+    preload: true
+})
+
 let timpaniSounds = {
     "Timpani in B" : timp_b,
     "Timpani in F" : timp_f,
     "Timpani in G" : timp_g,
     "Timpani in D#" : timp_dsharp,
-    "Timpani in C#" : timp_csharp
+    "Timpani in C#" : timp_csharp,
+    "Timpani in C3" : timp_c3,
+    "Timpani in C4" : timp_c4
 }
 
 let timpaniSelect1 = document.getElementById("timpaniSelectpauk1")
