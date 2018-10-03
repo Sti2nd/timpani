@@ -2,27 +2,92 @@
 
 var timp_b = new Howl({
     src: ["audio/timp_b_strong.flac"],
-    html5: true
+    html5: true,
+    preload: true
 })
-
-document.getElementById("pauk1").addEventListener("click", () => {
-    timp_b.play()
-})
-
 var timp_f = new Howl({
     src: ["audio/timp_f_strong.flac"],
-    html5: true
-})
-
-document.getElementById("pauk2").addEventListener("click", () => {
-    timp_f.play()
+    html5: true,
+    preload: true
 })
 
 var timp_g = new Howl({
     src: ["audio/timp_g_strong.flac"],
-    html5: true
+    html5: true,
+    preload: true
+})
+
+var timp_dsharp = new Howl({
+    src: ["audio/timp_dsharp_strong.flac"],
+    html5: true,
+    preload: true
+})
+
+var timp_csharp = new Howl({
+    src: ["audio/timp_csharp_strong.flac"],
+    html5: true,
+    preload: true
+})
+
+let timpaniSounds = {
+    "Timpani in B" : timp_b,
+    "Timpani in F" : timp_f,
+    "Timpani in G" : timp_g,
+    "Timpani in D#" : timp_dsharp,
+    "Timpani in C#" : timp_csharp
+}
+
+let timpaniSelect1 = document.getElementById("timpaniSelectpauk1")
+let timpaniSelect2 = document.getElementById("timpaniSelectpauk2")
+let timpaniSelect3 = document.getElementById("timpaniSelectpauk3")
+let timpaniSelect4 = document.getElementById("timpaniSelectpauk4")
+
+
+document.getElementById("pauk1").addEventListener("click", () => {
+    timpaniSounds[timpaniSelect1.value].play()
+})
+
+document.getElementById("pauk2").addEventListener("click", () => {
+    timpaniSounds[timpaniSelect2.value].play()
 })
 
 document.getElementById("pauk3").addEventListener("click", () => {
-    timp_g.play()
+    timpaniSounds[timpaniSelect3.value].play()
 })
+
+document.getElementById("pauk4").addEventListener("click", () => {
+    timpaniSounds[timpaniSelect4.value].play()
+})
+
+// Execute a function when the user presses a key on the keyboard
+document.addEventListener("keydown", function(event) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Number 49 is the "1" key on the keyboard
+    if (event.keyCode === 49) {
+        timpaniSounds[timpaniSelect1.value].play()
+    } else if (event.keyCode === 50) {
+        timpaniSounds[timpaniSelect2.value].play()
+    } else if (event.keyCode === 51) {
+        timpaniSounds[timpaniSelect3.value].play()
+    } else if (event.keyCode === 52) {
+        timpaniSounds[timpaniSelect4.value].play()
+    }
+  });
+
+/**
+ * Populate selection lists with all possible sounds
+ * @param {*} selectionList 
+ */
+function populateWithOptions(selectionList){
+    for (let timpaniKey in timpaniSounds){
+        let option = document.createElement("option");
+        option.text = timpaniKey;
+        selectionList.add(option);
+    }
+}
+
+populateWithOptions(timpaniSelect1)
+populateWithOptions(timpaniSelect2)
+populateWithOptions(timpaniSelect3)
+populateWithOptions(timpaniSelect4)

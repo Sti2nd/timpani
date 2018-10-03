@@ -2,8 +2,13 @@
     display: flex;
 }
 
-button {
+.buttonContainer {
     flex-grow: 1;
     height: 50vh;
     min-width: 20vh;
+}
+
+button {
+    width: 100%;
+    height: 100%;
 }
