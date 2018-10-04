@@ -1,14 +1,77 @@
+html {
+    height: 100vh;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+
+.content {
+    border: 1px solid black;
+    height: 99vh;
+}
+
 .playBox {
-    display: flex;
+    display: inline-flex;
+    vertical-align: top;
+    flex-wrap: wrap;
+    width: 90%;
 }
 
 .buttonContainer {
     flex-grow: 1;
-    height: 50vh;
     min-width: 20vh;
+    margin: 5px;
 }
 
 button {
     width: 100%;
+    height: 8vh;
+    margin: 0;
+    font-size: 1.5em;
+}
+
+select {
+    width: 100%;
+    font-size: 1.1em;
+    margin: 0;
+}
+
+.slideBox {
+    display: inline-block;
+    border: 1px solid red;
     height: 100%;
+    width: 9%;
+    min-width: 50px;
+}
+
+#volume {
+    -webkit-appearance: none;
+    appearance: none;
+    position: fixed;
+    top: 47.5%;
+    right: -25vw;
+    transform: rotateZ(270deg);
+    margin: 0;
+    width: 99vh;
+    height: 50px;
+    background: #d3d3d3;
+    outline: none;
+}
+
+#volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 50px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+#volume::-moz-range-thumb {
+    width: 25px;
+    height: 50px;
+    background: #4CAF50;
+    cursor: pointer;
 }
