@@ -9,7 +9,9 @@ body {
 
 .content {
     border: 1px solid black;
-    height: 99vh;
+    height: 100%;
+    width: 100%;
+    display: flex;
 }
 
 .playBox {
@@ -17,6 +19,7 @@ body {
     vertical-align: top;
     flex-wrap: wrap;
     width: 90%;
+    flex-grow: 2;
 }
 
 .buttonContainer {
@@ -40,22 +43,16 @@ select {
 
 .slideBox {
     display: inline-block;
-    border: 1px solid red;
     height: 100%;
-    width: 9%;
-    min-width: 50px;
+    width: 50px;
 }
 
 #volume {
     -webkit-appearance: none;
     appearance: none;
-    position: fixed;
-    top: 47.5%;
-    right: -25vw;
-    transform: rotateZ(270deg);
+    transform: rotateZ(90deg);
+    transform-origin: left;
     margin: 0;
-    width: 99vh;
-    height: 50px;
     background: #d3d3d3;
     outline: none;
 }
@@ -66,7 +63,6 @@ select {
     width: 25px;
     height: 50px;
     background: #4CAF50;
-    cursor: pointer;
 }
 
 #volume::-moz-range-thumb {

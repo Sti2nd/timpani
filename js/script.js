@@ -1,4 +1,6 @@
 //import { timpaniSounds } from "./soundImport.mjs";
+Howler.autoSuspend = false;
+
 let timp_c2 = new Howl({
     src: ["audio/timpani/C2-PB.wav"],
     html5: true,
@@ -153,35 +155,44 @@ let timpaniSelect4 = document.getElementById("timpaniSelectpauk4")
 
 // Play sound when user clicks on button
 document.getElementById("pauk1").addEventListener("click", () => {
-    playSound(timpaniSounds[timpaniSelect1.value])
+    Howler.ctx.resume().then(() => {
+        playSound(timpaniSounds[timpaniSelect1.value])
+    });
 })
 
 document.getElementById("pauk2").addEventListener("click", () => {
-    playSound(timpaniSounds[timpaniSelect2.value])
+    Howler.ctx.resume().then(() => {
+        playSound(timpaniSounds[timpaniSelect2.value])
+    });
 })
 
 document.getElementById("pauk3").addEventListener("click", () => {
-    playSound(timpaniSounds[timpaniSelect3.value])
+    Howler.ctx.resume().then(() => {
+        playSound(timpaniSounds[timpaniSelect3.value])
+    });
 })
 
 document.getElementById("pauk4").addEventListener("click", () => {
-    playSound(timpaniSounds[timpaniSelect4.value])
+    Howler.ctx.resume().then(() => {
+        playSound(timpaniSounds[timpaniSelect4.value])
+    });
 })
 
 // Play sound when the user presses a key on the keyboard
 document.addEventListener("keydown", (event) => {
-    // Cancel the default action, if needed
-    event.preventDefault()
-    // Number 49 is the number "1" key on the keyboard
-    if (event.keyCode === 49) {
-        playSound(timpaniSounds[timpaniSelect1.value])
-    } else if (event.keyCode === 50) {
-        playSound(timpaniSounds[timpaniSelect2.value])
-    } else if (event.keyCode === 51) {
-        playSound(timpaniSounds[timpaniSelect3.value])
-    } else if (event.keyCode === 52) {
-        playSound(timpaniSounds[timpaniSelect4.value])
-    }
+    // This resume takes forever in Chrome
+    Howler.ctx.resume().then(() => {
+        event.preventDefault();
+        if (event.code === "KeyQ") {
+            playSound(timpaniSounds[timpaniSelect1.value])
+        } else if (event.code === "KeyW") {
+            playSound(timpaniSounds[timpaniSelect2.value])
+        } else if (event.code === "KeyE") {
+            playSound(timpaniSounds[timpaniSelect3.value])
+        } else if (event.code === "KeyR") {
+            playSound(timpaniSounds[timpaniSelect4.value])
+        }
+    });
   });
 
 /**
@@ -205,11 +216,14 @@ function playSound(howlObject){
     howlObject.play()
 }
 
+let volumeSlider = document.getElementById("volume");
+volumeSlider.style.width = window.innerHeight - 50 + "px";
+
 document.addEventListener("mousemove", (event) => {
     let yCoord = event.clientY
     let height = window.innerHeight
     volume = (height - yCoord) / height;
-    console.log(volume)
+    volumeSlider.value = 100 - volume * 100;
 })
 
 populateWithOptions(timpaniSelect1)

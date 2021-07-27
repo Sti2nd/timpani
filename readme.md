@@ -1,4 +1,5 @@
 # Timpani online
+
 I created this web page because my student orchestra thought it would be fun to have timpani.
 
 The sounds are from No Budget Orchestra. The sample pack did not contain recording of every note, and thus sometimes one sample have been used for two notes. Here are an overview of the original sounds, and what sample have been used for another sound (like it probably is being used in sfz synthezisers).
@@ -20,3 +21,7 @@ _timpani.sfz_ from No Budget Orchestra\
 \<region> sample=Ab3.wav lokey=g#3 hikey=g#3 pitch_keycenter=g#3\
 \<region> sample=A3.wav lokey=a3 hikey=a3 pitch_keycenter=a3\
 \<region> sample=Bb3.wav lokey=a#3 hikey=d4 pitch_keycenter=a#3
+
+## Bugs
+
+- Big delay after some seconds. The [autoplay policy](https://developer.chrome.com/blog/autoplay/#webaudio) makes the audio go to sleep after some seconds :(
